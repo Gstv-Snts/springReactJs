@@ -18,7 +18,13 @@ public class todoServices {
         return todoRepository.findAll();
     }
     public void postTODO(TODO todo){
+    if(todoRepository.findTodoByTask(todo.getTask()).isEmpty() && todo.getTask() != null) {
+        System.out.println(todo);
         todoRepository.save(todo);
+    }else{
+        throw new IllegalStateException("Task already exist or it is null!");
+    }
+
     }
     public void deleteTODO(Long todoID){
         todoRepository.deleteById(todoID);
