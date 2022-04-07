@@ -1,13 +1,14 @@
 
 import GetTodos from './components/getTodos.js'
 import PostTodos from './components/postTodos.js'
-
+import NavBar from './components/navbar.js'
+import './scss/custom.scss'
 export default function App() {
-
   return (
-    <div className="App">
+    <>
+      <NavBar />
       <GetTodos />
       <PostTodos />
-    </div>
+    </>
   );
 }
