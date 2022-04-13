@@ -28,7 +28,7 @@ public class todoController {
         todoServices.deleteTODO(todoID);
     }
     @PutMapping(path = "{todoID}")
-    public void putTODO(@PathVariable("todoID") Long todoID, @RequestBody TODO todo){
-        todoServices.putTODO(todoID, todo);
+    public void putTODO(@PathVariable("todoID") Long todoID, @RequestBody TODO newTask){
+        todoServices.putTODO(todoID, newTask);
     }
 }

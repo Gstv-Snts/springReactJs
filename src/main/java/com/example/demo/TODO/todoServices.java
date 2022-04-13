@@ -21,21 +21,23 @@ public class todoServices {
     if(todoRepository.findTodoByTask(todo.getTask()).isEmpty() && todo.getTask() != null) {
         System.out.println("Criando task: "+todo);
         todoRepository.save(todo);
+        System.out.println(todoRepository.findAll());
     }else{
         throw new IllegalStateException("Task already exist or it is null!");
     }
 
     }
     public void deleteTODO(Long todoID){
+        if(todoRepository.findById(todoID).isEmpty()) {
+            throw new IllegalStateException("TODO doesnt exists");
+        }
         System.out.println("Deletando ID: "+todoID);
         todoRepository.deleteById(todoID);
     }
     @Transactional
-    public void putTODO(Long todoID, TODO todo){
-        System.out.println("Mudando "+todoRepository.findById(todoID)+" para "+todo.getTask());
-        TODO a = todoRepository.getById(todoID);
-        a.setTask(todo.getTask());
+    public void putTODO(Long todoID, TODO newTask){
+        System.out.println(todoID);
+        System.out.println(newTask);
+        todoRepository.getById(todoID).setTask(newTask.getTask());
     }
-
-
 }
